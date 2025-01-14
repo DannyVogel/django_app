@@ -1,8 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Feature:
-    id: int
-    name: str
-    description: str
-    is_true: bool
+class Feature(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    is_true = models.BooleanField()
