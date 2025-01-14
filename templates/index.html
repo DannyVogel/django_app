@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>{{title}}</title>
+</head>
+
+<body>
+    <h1>Hello {{name}}!!!!</h1>
+    <h3>Input text</h3>
+    <form method="POST" action='counter' class="form">
+        {% csrf_token %}
+        <textarea name="words" rows="10" cols="30"></textarea>
+        <input type="submit" value="Submit">
+    </form>
+    <div class="container">
+        {% for feature in features %}
+        <div class="box">
+            <h2>{{feature.name}}</h2>
+            <p>{{feature.description}}</p>
+            {% if feature.is_true %}
+            <p>It's true!</p>
+            {% else %}
+            <p>It's false</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>
